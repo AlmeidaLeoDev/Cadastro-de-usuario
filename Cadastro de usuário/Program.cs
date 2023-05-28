@@ -1,45 +1,45 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cadastro_de_usuário
+namespace Cadastro_de_Usuarios
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Digite o seu nome: ");
-            string Nome = Console.ReadLine();
+            string opcao;
+            do
+            {
+                Console.WriteLine("Pressione C para cadastrar um usuário e S para sair");
+                opcao = Console.ReadKey(true).KeyChar.ToString().ToLower(); //a letra vai ser passada para "opcao" depois será transformada em string e transformada em minúscula
+                if (opcao == "c")
+                {
+                     Console.WriteLine("Digite o seu nome completo: ");
+                     string nome = Console.ReadLine();
+                     Console.WriteLine("Pressione M para masculino e F para feminino: ");
+                     char genero = Console.ReadKey(true).KeyChar;
+                     Console.WriteLine("Digite a data de nascimento no formato dd/mm/aaaa: ");
+                     DateTime data = Convert.ToDateTime(Console.ReadLine()); //irá ocorrer a conversão do que o usuário digitar para "DateTime"
+                     Console.WriteLine("Digite o nome da sua rua: ");
+                     string nomeDaRua = Console.ReadLine();
+                     Console.WriteLine("Digite o número da casa: ");
+                     UInt32 numeroDaCasa = Convert.ToUInt32(Console.ReadLine()); //irá ocorrer a conversão do que o usuário digitar para "UInt32"
+                     Console.Clear();
+                }
+                else if(opcao == "s")
+                {
+                     Console.WriteLine("Encerrando o programa");
+                }
+                else
+                {
+                     Console.WriteLine("Opção desconhecida");
+                }
+            }while (opcao != "s"); //condição vai ser executada enquanto for diferente de "S"
 
-            Console.WriteLine("Digite a sua idade: ");
-            //o que o usuário digitou vem no formato "string", é preciso converter
-            UInt16 Idade = Convert.ToUInt16(Console.ReadLine());
-
-            Console.WriteLine("Digite o número do seu documento: ");
-            string Documento = Console.ReadLine();
-
-            Console.WriteLine("Digite o nome da sua rua: ");
-            string NomeDaRua = Console.ReadLine();
-
-            Console.WriteLine("Digite o número da casa: ");
-            UInt16 NumeroDaCasa = Convert.ToUInt16(Console.ReadLine());
-
-            Console.WriteLine("Informe o seu gênero. Pressione F para feminino e M para masculino");
-            string Genero = Convert.ToString(Console.ReadKey(true).KeyChar);
-            Console.WriteLine();
-
-            Console.WriteLine("Olá " + Nome);
-            Console.WriteLine("Você tem " + Idade + " de idade");
-            Console.WriteLine("O número do documento informado é: " + Documento);
-            Console.WriteLine("O nome da sua rua é: " + NomeDaRua);
-            Console.WriteLine("O número da sua casa é: " + NumeroDaCasa);
-            Console.WriteLine("O seu gênero é: " + Genero);
-
-            Console.WriteLine();
-            Console.WriteLine("Pressione qualquer tecla para encerrar");
-
+            Console.WriteLine("Pressione qualquer tecla para sair");
             Console.ReadKey();
         }
     }
